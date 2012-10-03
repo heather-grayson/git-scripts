@@ -13,13 +13,20 @@
 	ui = auto
 [merge]
 	stat = true
-	#tool = gvimdiff
+	tool = diffmerge
 [mergetool "vimdiff3"]
 	cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 [diff]
 	mnemonicprefix = true
 	suppressBlankEmpty = true
-	#tool = 
+	tool = diffmerge
+[difftool "diffmerge"]
+	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[mergetool "diffmerge"]
+	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+	trustExitCode = true
+[mergetool]
+	keepBackup = false
 [branch]
 	autosetupmerge = true
 [push]
@@ -42,7 +49,6 @@
 	new = green bold
 	commit = yellow bold
 	func = green dim
-  #plain = white bold
 
 [color "status"]
 	added = yellow
