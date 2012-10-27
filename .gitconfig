@@ -4,7 +4,7 @@
 [core]
 	whitespace = trailing-space, space-before-tab
 	excludesfile = ~/.gitignore_global
-	editor = 'mvim -f'
+	editor = 'mvim'
 [color]
 	diff = auto
 	status = auto
