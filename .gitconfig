@@ -4,27 +4,29 @@
 [core]
 	whitespace = trailing-space, space-before-tab
 	excludesfile = ~/.gitignore_global
-	editor = 'mvim'
+	editor = 'vim'
 [color]
 	diff = auto
 	status = auto
 	branch = auto
 	interactive = auto
 	ui = auto
-[merge]
-	stat = true
-	tool = diffmerge
-[mergetool "vimdiff3"]
-	cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 [diff]
 	mnemonicprefix = true
 	suppressBlankEmpty = true
 	tool = diffmerge
-[difftool "diffmerge"]
-	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[merge]
+	stat = true
+	tool = fugitive
+[mergetool "fugitive"]
+	cmd = vim -f -c "Gdiff" "$MERGED"
+[mergetool "vimdiff3"]
+	cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 [mergetool "diffmerge"]
 	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
 	trustExitCode = true
+[difftool "diffmerge"]
+	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
 [mergetool]
 	keepBackup = false
 [branch]
