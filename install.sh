@@ -31,7 +31,7 @@ echo "Thanks for installing git scripts"
 # Backup existing file
 echo "Backing up current files"
 today=`date +%Y%m%d`
-for i in $HOME/.gitconfig
+for i in $HOME/.gitconfig $HOME/.gitignore_global
 do 
   if [ -e $i ] && [ ! -L $i ] 
     then 
@@ -42,4 +42,5 @@ done
 # Set up simlinks
 echo "Setting up simlinks"
 lnif $DIR/.gitconfig $HOME/.gitconfig
+lnif $DIR/.gitignore_global $HOME/.gitignore_global
 
