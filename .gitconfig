@@ -87,6 +87,10 @@
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	ll = log --graph --date=short
 
+	# git flow
+	fs = !git flow feature start $1
+	ff = !git flow feature finish $1 && git pull && git push
+
 	# from https://git.wiki.kernel.org/index.php/Aliases
 	whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
 	whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
