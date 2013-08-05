@@ -62,6 +62,9 @@
 
 [alias]
 
+	# rollback
+	rollback = "!git reset $1; git reset --soft HEAD@{1}; git commit -m 'reverting to older revision $1'; git reset --hard; echo"
+
 	l = log --no-merges
 
 	# shotcuts
@@ -89,7 +92,7 @@
 
 	# git flow
 	fs = !git flow feature start $1
-	ff = !git flow feature finish $1 && git pull && git push
+	ff = !git flow feature finish $1 && git pull && git push && echo
 
 	# from https://git.wiki.kernel.org/index.php/Aliases
 	whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
