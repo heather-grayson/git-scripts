@@ -70,6 +70,9 @@
 	# shotcuts
 	m = checkout master
 
+	# remove from repo but not filesystem
+	removefromrepo = git rm --cached
+
 	# not a fan of random merges
 	pull = pull --ff-only
 
