@@ -91,7 +91,7 @@
 	ll = log --graph --date=short
 
 	# git flow
-	fs = !git flow feature start $1
+	fs = !git flow feature start 
 	ff = !git flow feature finish $1 && git pull && git push && echo
 
 	# from https://git.wiki.kernel.org/index.php/Aliases
