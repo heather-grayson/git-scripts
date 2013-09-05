@@ -76,6 +76,9 @@
 	# not a fan of random merges
 	pull = pull --ff-only
 
+	# pull all submodules easily
+	pullall = pull --recurse-submodules
+
 	# local exclude
 	exclude = !sh -c 'echo "$1" >> .git/info/exclude' -
 
