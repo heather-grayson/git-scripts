@@ -71,7 +71,7 @@
 	m = checkout master
 
 	# remove from repo but not filesystem
-	removefromrepo = git rm --cached
+	removefromrepo = rm --cached
 
 	# not a fan of random merges
 	pull = pull --ff-only
@@ -80,7 +80,7 @@
 	pullall = "!git submodule foreach git pull origin master"
 
 	# local exclude
-	exclude = !sh -c 'echo "$1" >> .git/info/exclude' -
+	exclude = "!sh -c 'echo "$1" >> .git/info/exclude' -"
 
 	# What has changed since...
 	changelist = "!git whatchanged --since='$1' --oneline | awk '/^:/ {print $6}' | sort -u; #"
@@ -145,7 +145,7 @@
 	bugrelease = "!sh -c 'git name-rev --tags --name-only  $(git log --grep ^$1: --pretty=\"format:%H\n\")' -"
 
 	# from https://gist.github.com/492227
-	lost = !"git fsck | awk '/dangling commit/ {print $3}' | git show --format='SHA1: %C(yellow)%h%Creset %f' --stdin | awk '/SHA1/ {sub(\"SHA1: \", \"\"); print}'"
+	lost = "!git fsck | awk '/dangling commit/ {print $3}' | git show --format='SHA1: %C(yellow)%h%Creset %f' --stdin | awk '/SHA1/ {sub(\"SHA1: \", \"\"); print}'"
 
 	# show a log without the formating, occasionaly handy for c&p
 	rawlog = log --format=\"format:commit %H%nAuthor:%an%n%n%B%n\"
@@ -174,7 +174,7 @@
 	thisbranch = rev-parse --abbrev-ref HEAD
 
 	# remove a file from index
-	unadd = git reset HEAD
+	unadd = !git reset HEAD
 
 	# url of origin, about 99% of what I use git config --list for
 	cloneurl = config --get remote.origin.url
@@ -192,7 +192,7 @@
 	ls-ignored = ls-files --exclude-standard --ignored --others
 
 	# based on "buggyfiles" above and https://github.com/cypher/dotfiles/blob/master/bin/git-churn
-	churn = !"git log -M -C --name-only --format=\"format:%n\" | grep . | sort | uniq -c | sort -n"
+	churn = "!git log -M -C --name-only --format=\"format:%n\" | grep . | sort | uniq -c | sort -n"
 
 	# uh, don't do this. list authors by numbers of commits. probably needs a .mailmap
 	churners = shortlog -sn --
