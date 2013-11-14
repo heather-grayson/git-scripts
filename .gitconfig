@@ -82,6 +82,9 @@
 	# local exclude
 	exclude = !sh -c 'echo "$1" >> .git/info/exclude' -
 
+	# What has changed since...
+	changelist = "!git whatchanged --since='$1' --oneline | awk '/^:/ {print $6}' | sort -u; #"
+
 	# because I always typo git commit --ammend, er, amend
 	amend = commit --amend
 	ammend = amend
