@@ -1,6 +1,6 @@
 [user]
-	name = James Tomasino
-	email = james@tomasino.org
+	name = Heather Mishon 
+	email = hmishon92@gmail.com 
 [core]
 	whitespace = trailing-space, space-before-tab
 	excludesfile = ~/.gitignore_global
